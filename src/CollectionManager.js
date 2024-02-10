@@ -51,5 +51,4 @@ class CollectionManager {
 
 
 
-
 module.exports = CollectionManager; 

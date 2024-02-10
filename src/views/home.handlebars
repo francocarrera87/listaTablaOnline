@@ -67,15 +67,17 @@
             <th>Action</th>
         </tr>
     </thead>
-        <tbody>
-            {{#each items}}
-                <tr>
-                    <td>{{this.id}}</td>
-                    <td>{{this.description}}</td>
-                </tr>
-            {{/each}}
-        </tbody>
-    </table>
+    <tbody id="tbodyId">
+        {{#each items}}
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.description}}</td>
+                <td><button onclick="deleteItem({{this.id}})">delete</button></td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table>
+
     <h2>Form</h2>
 
     <div id="itemForm">

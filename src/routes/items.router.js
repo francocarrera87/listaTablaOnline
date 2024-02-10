@@ -47,10 +47,7 @@ router.delete('/:id', async (req,res)=>{
 })
 
 //Agregamos la carga inicial de productos
-async function addProducts(){
-    await manager.addItem({description:'item 1'})
-    await manager.addItem({description:'item 2'})
-}
+
 addProducts()
 
 module.exports = router; 

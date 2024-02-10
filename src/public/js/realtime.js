@@ -15,11 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateTable(items) {
-        const table = document.getElementById('itemTable');
-        table.innerHTML = '';
+        const tbody = document.getElementById('tbodyId');
+        tbody.innerHTML = '';
     
         items.forEach(item => {
-            table.innerHTML += `<tr>
+            tbody.innerHTML += `<tr>
                 <td>${item.id}</td>
                 <td>${item.description}</td>
                 <td><button onclick="deleteItem(${item.id})">delete</button></td>
@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function deleteItem(id) {
-    socket.emit('delete item', { id: id });
+function removeRow(id) {
+    const row = document.querySelector(`#itemTable tbody tr td:first-child:contains('${id}')`).parentNode;
+    row.remove();
 }

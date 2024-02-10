@@ -1,10 +1,11 @@
 <h1>Real Time</h1>
 
-<table>
+<table id="itemTable">
     <thead>
         <tr>
             <th>ID</th>
             <th>Description</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody id="tbodyId">
@@ -12,11 +13,12 @@
             <tr>
                 <td>{{this.id}}</td>
                 <td>{{this.description}}</td>
-                <td><button class="deleteButton" data-id="{{this.id}}">Delete</button></td>
+                <td><button onclick="deleteItem({{this.id}})">delete</button></td>
             </tr>
         {{/each}}
     </tbody>
 </table>
+
 
 <h2>Form</h2>
 
