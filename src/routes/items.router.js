@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
     await manager.addItem(req.body);
     const items = await manager.getItems();
     req.io.emit('new item', items);
-    res.send({ status: 'success' });  // Evita la redirección
+    res.send({ status: 'success' });  
 });
 
 router.put('/:id', async (req, res)=>{
@@ -46,7 +46,7 @@ router.delete('/:id', async (req,res)=>{
     res.send({status:'success'})
 })
 
-//Agregamos la carga inicial de productos
+
 
 addProducts()
 

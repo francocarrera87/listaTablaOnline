@@ -1,5 +1,7 @@
+let socket;  // Declarar socket en el ámbito global
+
 document.addEventListener('DOMContentLoaded', () => {
-    const socket = io();
+    socket = io();  // Inicializar socket aquí
 
     const itemDescription = document.getElementById('itemDescription');
     const createItemButton = document.getElementById('createItemButton');
@@ -13,22 +15,27 @@ document.addEventListener('DOMContentLoaded', () => {
     socket.on('list updated', (items) => {
         updateTable(items);
     });
-
-    function updateTable(items) {
-        const tbody = document.getElementById('tbodyId');
-        tbody.innerHTML = '';
-    
-        items.forEach(item => {
-            tbody.innerHTML += `<tr>
-                <td>${item.id}</td>
-                <td>${item.description}</td>
-                <td><button onclick="deleteItem(${item.id})">delete</button></td>
-            </tr>`;
-        });
-    }
 });
 
-function removeRow(id) {
-    const row = document.querySelector(`#itemTable tbody tr td:first-child:contains('${id}')`).parentNode;
-    row.remove();
+// Función para eliminar un ítem por su ID
+function deleteItem(id) {
+    socket.emit('delete item', { id: id });
 }
+
+function updateTable(items) {
+    const tbodyId = document.getElementById('tbodyId');
+    tbodyId.innerHTML = "";
+
+    // Verificar si items es un array
+    if (Array.isArray(items)) {
+        items.forEach(item => {
+            tbodyId.innerHTML += `
+                <tr>
+                    <td>${item.id}</td>
+                    <td>${item.description}</td>
+                    <td><button onclick="deleteItem(${item.id})">delete</button></td>
+                </tr>`;
+        });
+    }
+}
+

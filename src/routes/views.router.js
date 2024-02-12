@@ -10,10 +10,5 @@ router.get('/',async (req, res)=>{
     res.render('home',{items:items})
 })
 
-router.get('/realtimeitems',async (req,res)=>{
-    const items = await manager.getItems()
-    res.render('realTimeItems',{items})
-})
-
 
 module.exports = router; 
