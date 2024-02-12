@@ -28,11 +28,13 @@ io.on('connection', (socket) => {
         io.emit('list updated', items);
     });
 
-    socket.on('delete item', async ({id}) => {
+    socket.on('delete item', async ({ id }) => {
         await manager.deleteItem(id);
         const items = await manager.getItems();
-        io.emit('list updated', {items:items});
-    })
+        io.emit('list updated', items);
+        io.emit('item deleted', id); 
+    });
+    
     
 });
 
