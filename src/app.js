@@ -28,7 +28,7 @@ io.on('connection', (socket) => {
         io.emit('list updated', items);
     });
 
-    socket.on('delete item', async ({ id }) => {
+    socket.on('delete item', async ({id}) => {
         await manager.deleteItem(id);
         const items = await manager.getItems();
         io.emit('list updated', items);
@@ -52,7 +52,7 @@ app.get('/', async (req, res) => {
 
 app.get('/realtimeitems', async (req, res) => {
     const items = await manager.getItems();
-    res.render('realTimeItems', { items });
+    res.render('realTimeProducts', { items });
 });
 
 const PORT = process.env.PORT || 8080;
