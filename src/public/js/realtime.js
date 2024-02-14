@@ -1,7 +1,7 @@
-let socket;  // Declarar socket en el ámbito global
+let socket;  
 
 document.addEventListener('DOMContentLoaded', () => {
-    socket = io();  // Inicializar socket aquí
+    socket = io();  
 
     const itemDescription = document.getElementById('itemDescription');
     const createItemButton = document.getElementById('createItemButton');
@@ -17,16 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Función para eliminar un ítem por su ID
-function deleteItem(id) {
-    socket.emit('delete item', { id: id });
-}
 
 function updateTable(items) {
     const tbodyId = document.getElementById('tbodyId');
     tbodyId.innerHTML = "";
 
-    // Verificar si items es un array
     if (Array.isArray(items)) {
         items.forEach(item => {
             tbodyId.innerHTML += `
@@ -39,3 +34,7 @@ function updateTable(items) {
     }
 }
 
+// Función para eliminar un ítem por su ID
+function deleteItem(id) {
+    socket.emit('delete item', { id: id });
+}

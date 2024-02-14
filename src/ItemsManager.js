@@ -43,17 +43,17 @@ class ItemsManager {
 
         items[index] = {...newItem, id: items[index].id }; 
         
-        await fs.promises.writeFile(this.path, JSON.stringify(items,null, '\t')); //escribimos el archivo
+        await fs.promises.writeFile(this.path, JSON.stringify(items,null, '\t'));
     }
 
     async deleteItem(id){
         const content = await fs.promises.readFile(this.path, 'utf-8'); //leemos archivo
-        let items = JSON.parse(content); //convertimos archivo en objeto javascript
+        let items = JSON.parse(content); 
     
-        items = items.filter(i=>i.id != id) //buscamos un item con ese mismo id
+        items = items.filter(i=>i.id != id)
     
-        //antes de guardar el array hacemos JSON.stringify para convertir nuestro objeto en JSON
-        await fs.promises.writeFile(this.path, JSON.stringify(items,null,'\t')); //escribimos
+        
+        await fs.promises.writeFile(this.path, JSON.stringify(items,null,'\t')); 
     }
     
 }

@@ -44,7 +44,7 @@ class CollectionManager {
             collection.items.push({ item: itemId, quantity: 1 });
         }
 
-        collections[col_index] = collection;  // Corregir esta línea
+        collections[col_index] = collection; 
         await fs.promises.writeFile(this.path, JSON.stringify(collections, null, '\t'));
     }
 }
